@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Амьтдын зураг</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .search-box {
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .animal-card {
+            width: 200px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .animal-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .animal-name {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Амьтдын зураг</h1>
+
+    <!-- Хайлт хэсэг -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Амьтдын нэрээр хайх... (жишээ нь: Тэмээ)">
+    </div>
+
+    <!-- Галлерей -->
+    <div class="gallery" id="gallery">
+        <div class="animal-card">
+            <img src="gallery/temee.jpg" alt="Тэмээ" />
+            <div class="animal-name">Тэмээ</div>
+        </div>
+        <div class="animal-card">
+            <img src="gallery/bars.jpg" alt="Барс" />
+            <div class="animal-name">Барс</div>
+        </div>
+        <div class="animal-card">
+            <img src="gallery/mori.jpg" alt="Морь" />
+            <div class="animal-name">Морь</div>
+        </div>
+        <div class="animal-card">
+            <img src="gallery/sheep.jpg" alt="Хонь" />
+            <div class="animal-name">Хонь</div>
+        </div>
+        <div class="animal-card">
+            <img src="gallery/tuulai.jpg" alt="Туулай" />
+            <div class="animal-name">Туулай</div>
+        </div>
+    </div>
+
+    <!-- JS хайлт хийх хэсэг -->
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const cards = document.querySelectorAll(".animal-card");
+
+        searchInput.addEventListener("keyup", function () {
+            const filter = searchInput.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.querySelector(".animal-name").textContent.toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
